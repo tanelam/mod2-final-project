@@ -1,0 +1,19 @@
+<h1>Edit Your Recipe</h1>
+
+<%= form_for @recipe do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description, cols: 30, rows: 8 %>
+  <br>
+  <%= f.label "Recipe Photo" %>
+  <%= f.file_field :recipe_photo %>
+  <br>
+  <%= f.submit %>
+<% end %>
+
+
+<%= button_to recipe_path(@recipe), data: {confirm: 'Are you sure you want to delete this recipe?'}, method: :delete do %>
+    Delete Your Recipe
+    <% end %>

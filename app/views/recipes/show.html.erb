@@ -1,0 +1,15 @@
+
+
+
+<h1><%= @recipe.title.capitalize %></h1>
+<br>
+<br>
+
+<p><img src="<%= @recipe.recipe_photo %>" alt='missing' style="max-height: 500px; max-width: 300px" /></p>
+<br>
+<label>Description:</label>
+<%= @recipe.description %>
+<br>
+<%= link_to "Back to Gallery", recipes_path %>
+<br>
+<%= link_to "Edit your Recipe", edit_recipe_path %>

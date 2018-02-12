@@ -1,0 +1,8 @@
+<h1>Recipe Gallery</h1>
+
+    <% @recipes.each do |recipe| %>
+      <img src='<%= recipe.recipe_photo %>' class="thumbnail img-responsive danger" style="max-height: 300px; max-width: 200px"/>
+      <p><%= link_to recipe.title.capitalize, recipe_path(recipe) %></p>
+    <% end %>
+  
+</ul>

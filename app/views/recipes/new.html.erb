@@ -1,0 +1,17 @@
+<h1>New Recipe</h1>
+
+
+<%= form_for (@recipe) do |f| %>
+  <br>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description, cols: 30, rows: 8 %>
+  <br>
+  <%= f.label "Recipe Photo" %>
+  <%= f.file_field :recipe_photo %>
+
+<% end %>
+
+<%= link_to "Back to Gallery", recipes_path %>
