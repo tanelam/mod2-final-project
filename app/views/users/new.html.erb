@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1>Sign up</h1>
+</div>
+
+<h3><%= render "errors/error_messages"%></h3>
+
+<%= form_for @user do |f| %>
+  <p><%= f.label "Username" %>
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label "Password" %>
+  <%= f.password_field :password %></p>
+
+  <%= f.submit "Submit" %>
+<% end %>

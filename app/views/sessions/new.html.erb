@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Log in</h1>
+</div>
+
+
+<h3><%= render "errors/error_messages"%></h3>
+
+  <%= form_tag sessions_path do %>
+
+    <p><%= label_tag "Username" %>
+    <%= text_field_tag :username %></p>
+
+    <p><%= label_tag "Password" %>
+    <%= password_field_tag :password %></p>
+
+    <%= submit_tag "Submit" %>
+  <% end %>
+
+  <h2>New User?<%= link_to "Sign up now!", signup_path %></h2>

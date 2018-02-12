@@ -3,14 +3,17 @@
 
 <%= form_for (@recipe) do |f| %>
   <br>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, placeholder: "Title" %>
   <br>
-  <%= f.label :description %>
-  <%= f.text_area :description, cols: 30, rows: 8 %>
   <br>
-  <%= f.label "Recipe Photo" %>
+  <%= f.text_area :description, placeholder: "Add a description...", cols: 30, rows: 4 %>
+  <br>
+  <br>
+  <%= f.label "Add Your Favorite Picture" %>
   <%= f.file_field :recipe_photo %>
+  <br>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <%= f.submit %>
 
 <% end %>
 
