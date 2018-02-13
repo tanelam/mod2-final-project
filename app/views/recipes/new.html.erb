@@ -6,6 +6,10 @@
   <%= f.text_field :title, placeholder: "Title" %>
   <br>
   <br>
+  <%= f.label "Category" %>
+  <%= f.collection_select :category_id, @categories, :id, :name %>
+  <br>
+  <br>
   <%= f.text_area :description, placeholder: "Add a description...", cols: 30, rows: 4 %>
   <br>
   <br>
@@ -14,14 +18,12 @@
   <br>
   <%= f.text_area :directions, placeholder: "Add directions...", cols: 30, rows: 4 %>
   <%= f.hidden_field :user_id, value: session[:user_id] %>
-
   <br>
-
-    <!-- <%= f.fields_for :ingredients do |t| %>
-      <input type="hidden" name="recipe_id" value="<%= @recipe.id %>">
+  <br>
+    <%= fields_for :ingredients do |t| %>
       <%= t.label "Ingredient name:" %>
       <%= t.text_field :name %>
-    <% end %> -->
+    <% end %>
 
   <br>
   <%= f.submit %>
