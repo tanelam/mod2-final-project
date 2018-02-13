@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   resources :users
   resources :recipes
+  resources :reviews
   resources :ingredients
 
-  resources :directions
 
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
