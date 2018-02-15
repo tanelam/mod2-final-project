@@ -19,11 +19,16 @@ class RecipesController < ApplicationController
   end
 
   def create
-    # byebug
-    @recipe = Recipe.create(recipe_params)
-    @ingredient = Ingredient.create(ingredient_params)
-    Ingredientrecipe.create(recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-    redirect_to recipe_path(@recipe)
+    @recipe = Recipe.new(recipe_params)
+     if @recipe.valid?
+      @ingredient = Ingredient.create(ingredient_params)
+      Ingredientrecipe.create(recipe_id: @recipe.id, ingredient_id: @ingredient.id)
+      @recipe.save
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:errors]= ["Form must contain title, description, photo, directions and ingredients :)"]
+      redirect_to new_recipe_path
+    end
   end
 
   def edit
@@ -49,9 +54,7 @@ class RecipesController < ApplicationController
   end
 
   def ingredient_params
-    # byebug
     params.require(:ingredients).permit(:name)
-
   end
 
 end

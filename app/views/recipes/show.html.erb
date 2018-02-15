@@ -25,7 +25,7 @@
 <ul>
   <% @recipe.reviews.map do |review| %>
     <li><%= review.content %>
-    <% if session[:user_id] == @recipe.user_id %> by <%= @user.username.capitalize %>
+    <% if session[:user_id] == review.user_id %> by <%= @user.username.capitalize %>
       <%= link_to 'delete',  review,  method: :delete, data: { confirm: 'Are you sure yo want to delete this review?' } %></li>
     <% end %>
   <% end %>

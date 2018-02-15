@@ -9,21 +9,17 @@ class Recipe < ApplicationRecord
 
   has_many :ingredientrecipes
   has_many :ingredients, through: :ingredientrecipes
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :recipe_photo, presence: true
+  validates :directions, presence: true
+
+  accepts_nested_attributes_for :ingredients, reject_if: proc { |attributes| attributes['name'].blank? }
+
   # cannot use accepts_nested_attributes_for with a has_many has_many relationship
   # accepts_nested_attributes_for :ingredients
 
-  # validates :title, presence: true
-  # validates :description, presence: true
-  # validates :recipe_photo, presence: true
-
-
-  # def ingredients_attributes=(ingredients_attributes)
-  #   raise ingredients_attributes.inspect
-  #
-  #   ingredients_attributes.each do |ingredient_attributes|
-  #     self.ingredients.build(ingredient_attributes)
-  #   end
-  # end
 
   def ingredient_name=(name)
     self.ingredient = Ingredient.find_or_create_by(name: name)

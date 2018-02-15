@@ -1,5 +1,6 @@
 <h1>New Recipe</h1>
 
+<h3><%= render "errors/error_messages"%></h3>
 
 <%= form_for (@recipe) do |f| %>
   <br>
@@ -21,8 +22,9 @@
   <br>
   <br>
     <%= fields_for :ingredients do |t| %>
-      <%= t.label "Ingredient name:" %>
-      <%= t.text_field :name %>
+      <%= t.text_field :name,  placeholder: "Ingredient" %> <br>
+      <br>
+
     <% end %>
 
   <br>

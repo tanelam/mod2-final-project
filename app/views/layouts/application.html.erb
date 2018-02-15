@@ -18,7 +18,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-default" id="ntext">
 
     <div class="container-fluid" id="ntext">
@@ -33,14 +32,16 @@
       <li><%= link_to "Logout", '/logout', method: :delete%></li>
       <% else %>
       <li><%= link_to "Login", login_path%></li>
-    <% end %> 
+    <% end %>
   </ul>
 
-</div>
-</nav>
 
+    </nav>
+  </div>
+  <div class="container">
+  <div class="jumbotron">
     <%= yield %>
-
-
+</div>
+</div>
   </body>
 </html>
