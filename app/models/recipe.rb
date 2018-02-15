@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
 
   # cannot use accepts_nested_attributes_for with a has_many has_many relationship
   # accepts_nested_attributes_for :ingredients
-
+  
 
   def ingredient_name=(name)
     self.ingredient = Ingredient.find_or_create_by(name: name)

@@ -1,3 +1,4 @@
+
 class RecipesController < ApplicationController
 
   def index
@@ -11,24 +12,26 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    # byebug
   end
 
   def new
     @recipe = Recipe.new
     @categories = Category.all
+    @recipe.ingredients.build
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-     if @recipe.valid?
-      @ingredient = Ingredient.create(ingredient_params)
-      Ingredientrecipe.create(recipe_id: @recipe.id, ingredient_id: @ingredient.id)
-      @recipe.save
-      redirect_to recipe_path(@recipe)
-    else
-      flash[:errors]= ["Form must contain title, description, photo, directions and ingredients :)"]
-      redirect_to new_recipe_path
-    end
+    # raise params.inspect
+    @recipe = Recipe.create(recipe_params)
+    @ingredient = Ingredient.create(name: params[:name])
+    # byebug
+    # Ingredientrecipe.create(recipe_id: @recipe.id, ingredient_id: @ingredient.id)
+    redirect_to recipe_path(@recipe)
+    # else
+    #   flash[:errors]= ["Form must contain title, description, photo, directions and ingredients :)"]
+    #   redirect_to new_recipe_path
+    # end
   end
 
   def edit
@@ -50,11 +53,11 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :recipe_photo, :user_id, :directions, :category_id)
+    params.require(:recipe).permit(:title, :description, :recipe_photo, :user_id, :directions, :category_id, :ingredient_name, :ingredients_attributes => [:name])
   end
 
-  def ingredient_params
-    params.require(:ingredients).permit(:name)
-  end
+  # def ingredient_params
+  #   params.require(:ingredients_attributes).permit(:name)
+  # end
 
 end
